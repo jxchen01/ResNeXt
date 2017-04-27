@@ -13,20 +13,12 @@ class ResNetBasicblock(nn.Module):
     RexNet basicblock (https://github.com/facebook/fb.resnet.torch/blob/master/models/resnet.lua)
     """
     def __init__(self, inplanes, planes, stride=1, downsample=None):
-        """ Constructor
-        Args:
-            in_channels: input channel dimensionality
-            out_channels: output channel dimensionality
-            stride: conv stride. Replaces pooling layer.
-            cardinality: num of convolution groups.
-            widen_factor: factor to reduce the input dimensionality before convolution.
-        """
         super(ResNetBasicblock, self).__init__()
 
-        self.conv_a = nn.Conv2d(inplanes, planes, kernel_size=3, stride=stride, padding=1, bias=False)
+        self.conv_a = nn.Conv2d(inplanes, planes, kernel_size=3, stride=stride, padding=1, bias=True)
         self.bn_a = nn.BatchNorm2d(planes)
 
-        self.conv_b = nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=False)
+        self.conv_b = nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=True)
         self.bn_b = nn.BatchNorm2d(planes)
 
         self.downsample = downsample
@@ -50,6 +42,7 @@ class DownsampleA(nn.Module):
 
     def __init__(self, nIn, nOut, stride):
         super(DownsampleA, self).__init__()
+	assert stride == 2
         self.avg = nn.AvgPool2d(1, stride)
 
     def forward(self, x):
@@ -60,7 +53,7 @@ class DownsampleC(nn.Module):
 
     def __init__(self, nIn, nOut, stride):
         super(DownsampleC, self).__init__()
-        self.conv = nn.Conv2d(nIn, nOut, kernel_size=1, stride=stride, padding=0, bias=False)
+        self.conv = nn.Conv2d(nIn, nOut, kernel_size=1, stride=stride, padding=0, bias=True)
         self.bn   = nn.BatchNorm2d(nOut)
 
     def forward(self, x):
@@ -90,7 +83,7 @@ class CifarResNet(nn.Module):
 
         self.num_classes = num_classes
 
-        self.conv_1_3x3 = nn.Conv2d(3, 16, 3, 1, 1, bias=False)
+        self.conv_1_3x3 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1, bias=True)
         self.bn_1 = nn.BatchNorm2d(16)
 
         self.inplanes = 16
@@ -106,19 +99,18 @@ class CifarResNet(nn.Module):
             if isinstance(m, nn.Conv2d):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
                 m.weight.data.normal_(0, math.sqrt(2. / n))
+                m.bias.data.zero_()
             elif isinstance(m, nn.BatchNorm2d):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
-                n = m.weight.size(1)
-                m.weight.data.normal_(0, 0.01)
+                init.kaiming_normal(m.weight)
                 m.bias.data.zero_()
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = DownsampleA(self.inplanes, planes * block.expansion, stride)
-            #downsample = DownsampleC(self.inplanes, planes * block.expansion, stride)
 
         layers = []
         layers.append(block(self.inplanes, planes, stride, downsample))

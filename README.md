@@ -20,24 +20,24 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
 |  29   |      8      |     64     |    34.4M   |       3.65       |       17.77       |   ResNeXt    |
 |  29   |      16     |     64     |    68.1M   |       3.58       |       17.31       |   ResNeXt    |
-|  20   |      -      |     -      |    0.27M   |       8.75       |         -         |   ResNet     |
-|  32   |      -      |     -      |    0.46M   |       7.51       |         -         |   ResNet     |
-|  44   |      -      |     -      |    0.66M   |       7.17       |         -         |   ResNet     |
-|  56   |      -      |     -      |    0.85M   |       6.97       |         -         |   ResNet     |
-| 110   |      -      |     -      |    1.7M    |  6.43(6.61^0.16) |         -         |   ResNet     |
-| 1202  |      -      |     -      |   19.4M    |       7.93       |         -         |   ResNet     |
+|  20   |      *      |     *      |    0.27M   |       8.75       |         -         |   ResNet     |
+|  32   |      *      |     *      |    0.46M   |       7.51       |         -         |   ResNet     |
+|  44   |      *      |     *      |    0.66M   |       7.17       |         -         |   ResNet     |
+|  56   |      *      |     *      |    0.85M   |       6.97       |         -         |   ResNet     |
+| 110   |      *      |     *      |    1.7M    |  6.43(6.61^0.16) |         -         |   ResNet     |
+| 1202  |      *      |     *      |   19.4M    |       7.93       |         -         |   ResNet     |
 
 ## Our Results
 | depth | cardinality | base width | parameters | accuracy cifar10 | accuracy cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
 |  29   |      8      |     64     |    34.4M   |       3.86       |                   |   ResNeXt    |
 |  29   |      16     |     64     |    68.1M   |        -         |                   |   ResNeXt    |
-|  20   |      -      |     -      |    0.27M   |       8.66       |       33.17       |   ResNet     |
-|  32   |      -      |     -      |    0.46M   |       7.47       |         -         |   ResNet     |
-|  44   |      -      |     -      |    0.66M   |        -         |         -         |   ResNet     |
-|  56   |      -      |     -      |    0.85M   |                  |         -         |   ResNet     |
-| 110   |      -      |     -      |    1.7M    |                  |         -         |   ResNet     |
-| 1202  |      -      |     -      |   19.4M    |        -         |         -         |   ResNet     |
+|  20   |      *      |     *      |    0.27M   |       8.35       |         -         |   ResNet     |
+|  32   |      *      |     *      |    0.46M   |        -         |         -         |   ResNet     |
+|  44   |      *      |     *      |    0.66M   |        -         |         -         |   ResNet     |
+|  56   |      *      |     *      |    0.85M   |                  |         -         |   ResNet     |
+| 110   |      *      |     *      |    1.7M    |                  |         -         |   ResNet     |
+| 1202  |      *      |     *      |   19.4M    |        -         |         -         |   ResNet     |
 
 ## Other frameworks
 * [torch (@facebookresearch)](https://github.com/facebookresearch/ResNeXt). (Original) Cifar and Imagenet

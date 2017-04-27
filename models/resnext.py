@@ -12,14 +12,6 @@ class ResNeXtBottleneck(nn.Module):
     RexNeXt bottleneck type C (https://github.com/facebookresearch/ResNeXt/blob/master/models/resnext.lua)
     """
     def __init__(self, inplanes, planes, cardinality, base_width, stride=1, downsample=None):
-        """ Constructor
-        Args:
-            in_channels: input channel dimensionality
-            out_channels: output channel dimensionality
-            stride: conv stride. Replaces pooling layer.
-            cardinality: num of convolution groups.
-            widen_factor: factor to reduce the input dimensionality before convolution.
-        """
         super(ResNeXtBottleneck, self).__init__()
 
         D = int(math.floor(planes * (base_width/64.0)))
@@ -60,13 +52,6 @@ class CifarResNeXt(nn.Module):
     https://arxiv.org/pdf/1611.05431.pdf
     """
     def __init__(self, block, depth, cardinality, base_width, num_classes):
-        """ Constructor
-        Args:
-            cardinality: number of convolution groups.
-            depth: number of layers.
-            num_classes: number of classes
-            base_width: base width
-        """
         super(CifarResNeXt, self).__init__()
 
         #Model type specifies number of layers for CIFAR-10 and CIFAR-100 model
@@ -87,8 +72,6 @@ class CifarResNeXt(nn.Module):
         self.avgpool = nn.AvgPool2d(8)
         self.classifier = nn.Linear(256*block.expansion, num_classes)
 
-        init.kaiming_normal(self.classifier.weight)
-
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
@@ -97,8 +80,7 @@ class CifarResNeXt(nn.Module):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
-                n = m.weight.size(1)
-                m.weight.data.normal_(0, 0.01)
+		init.kaiming_normal(m.weight)
                 m.bias.data.zero_()
 
     def _make_layer(self, block, planes, blocks, stride=1):
