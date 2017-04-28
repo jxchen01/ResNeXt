@@ -27,10 +27,11 @@ class ResNetBasicblock(nn.Module):
         residual = x
 
         basicblock = self.conv_a.forward(x)
-        basicblock = F.relu(self.bn_a.forward(basicblock), inplace=True)
+        basicblock = self.bn_a.forward(basicblock)
+        basicblock = F.relu(basicblock, inplace=True)
 
         basicblock = self.conv_b.forward(basicblock)
-        basicblock = F.relu(self.bn_b.forward(basicblock), inplace=True)
+        basicblock = self.bn_b.forward(basicblock)
 
         if self.downsample is not None:
             residual = self.downsample(x)

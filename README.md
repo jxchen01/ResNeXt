@@ -36,7 +36,7 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 |  32   |      *      |     *      |    0.46M   |       7.51       |         -         |   ResNet     |
 |  44   |      *      |     *      |    0.66M   |       7.17       |         -         |   ResNet     |
 |  56   |      *      |     *      |    0.85M   |       6.97       |         -         |   ResNet     |
-| 110   |      *      |     *      |    1.7M    |  6.43(6.61^0.16) |         -         |   ResNet     |
+| 110   |      *      |     *      |    1.7M    |       6.61       |         -         |   ResNet     |
 | 1202  |      *      |     *      |   19.4M    |       7.93       |         -         |   ResNet     |
 
 ## Our Results
