@@ -54,7 +54,7 @@ def main():
     # Init logger
     if not os.path.isdir(args.save_path):
         os.makedirs(args.save_path)
-    log = open(os.path.join(args.save_path, 'log.txt'), 'w')
+    log = open(os.path.join(args.save_path, 'log_seed_{}.txt'.format(args.manualSeed)), 'w')
     print_log('save path : {}'.format(args.save_path), log)
     state = {k: v for k, v in args._get_kwargs()}
     print_log(state, log)
