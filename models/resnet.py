@@ -15,10 +15,10 @@ class ResNetBasicblock(nn.Module):
     def __init__(self, inplanes, planes, stride=1, downsample=None):
         super(ResNetBasicblock, self).__init__()
 
-        self.conv_a = nn.Conv2d(inplanes, planes, kernel_size=3, stride=stride, padding=1, bias=True)
+        self.conv_a = nn.Conv2d(inplanes, planes, kernel_size=3, stride=stride, padding=1, bias=False)
         self.bn_a = nn.BatchNorm2d(planes)
 
-        self.conv_b = nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=True)
+        self.conv_b = nn.Conv2d(planes, planes, kernel_size=3, stride=1, padding=1, bias=False)
         self.bn_b = nn.BatchNorm2d(planes)
 
         self.downsample = downsample
@@ -43,7 +43,7 @@ class DownsampleA(nn.Module):
     def __init__(self, nIn, nOut, stride):
         super(DownsampleA, self).__init__()
 	assert stride == 2
-        self.avg = nn.AvgPool2d(1, stride)
+        self.avg = nn.AvgPool2d(kernel_size=1, stride=stride)
 
     def forward(self, x):
         x = self.avg(x)
@@ -53,7 +53,7 @@ class DownsampleC(nn.Module):
 
     def __init__(self, nIn, nOut, stride):
         super(DownsampleC, self).__init__()
-        self.conv = nn.Conv2d(nIn, nOut, kernel_size=1, stride=stride, padding=0, bias=True)
+        self.conv = nn.Conv2d(nIn, nOut, kernel_size=1, stride=stride, padding=0, bias=False)
         self.bn   = nn.BatchNorm2d(nOut)
 
     def forward(self, x):
@@ -83,7 +83,7 @@ class CifarResNet(nn.Module):
 
         self.num_classes = num_classes
 
-        self.conv_1_3x3 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1, bias=True)
+        self.conv_1_3x3 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1, bias=False)
         self.bn_1 = nn.BatchNorm2d(16)
 
         self.inplanes = 16
@@ -93,13 +93,11 @@ class CifarResNet(nn.Module):
         self.avgpool = nn.AvgPool2d(8)
         self.classifier = nn.Linear(64*block.expansion, num_classes)
 
-        init.kaiming_normal(self.classifier.weight)
-
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
                 m.weight.data.normal_(0, math.sqrt(2. / n))
-                m.bias.data.zero_()
+                #m.bias.data.zero_()
             elif isinstance(m, nn.BatchNorm2d):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()

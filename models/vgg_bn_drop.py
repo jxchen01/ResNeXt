@@ -11,11 +11,11 @@ class ConvBNReLU(nn.Module):
     def __init__(self, nInputPlane, nOutputPlane):
         super(ConvBNReLU, self).__init__()
         self.conv = nn.Conv2d(nInputPlane, nOutputPlane, kernel_size=3, stride=1, padding=1, bias=False)
-        self.bn = nn.BatchNorm2d(planes)
+        self.bn = nn.BatchNorm2d(nOutputPlane)
 
     def forward(self, x):
         out = self.conv(x)
-	out = self.bn(x)
+	out = self.bn(out)
         return F.relu(out, inplace=True)
 
 class CifarVGGNet(nn.Module):
@@ -62,11 +62,11 @@ class CifarVGGNet(nn.Module):
 
 	
 	self.classifier = nn.Sequential() # 512
-	self.classifier.add_module('vgg_cls_drop', nn.Dropout(p=0.5, inplace=True))
+	self.classifier.add_module('vgg_cls_drop1', nn.Dropout(p=0.5, inplace=True))
 	self.classifier.add_module('vgg_cls_fc1', nn.Linear(512, 512))
 	self.classifier.add_module('vgg_cls_bn1', nn.BatchNorm1d(512))
-	self.classifier.add_module('vgg_cls_relu', nn.ReLU)
-	self.classifier.add_module('vgg_cls_drop', nn.Dropout(p=0.5, inplace=True))
+	self.classifier.add_module('vgg_cls_relu', nn.ReLU())
+	self.classifier.add_module('vgg_cls_drop2', nn.Dropout(p=0.5, inplace=True))
 	self.classifier.add_module('vgg_cls_prediction', nn.Linear(512, self.num_classes))
 
         for m in self.modules():
