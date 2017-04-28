@@ -13,6 +13,18 @@ To train on Cifar-10 using 4 gpu:
 python main.py ./data/cifar.python --dataset cifar10 --arch resnext29_8_64 --save_path ./snapshots/cifar10_resnext29_8_64_310 --epochs 310 --learning_rate 0.05 --schedule 150 225 300 --gammas 0.1 0.1 0.1 --batch_size 128 --workers 4 --ngpu 4
 ```
 
+Or there are some off-the-shelf scripts can dirrectly be used for training.
+
+```bash
+sh ./shells/cifar10_resnet20.sh
+```
+
+And a simplified caffenet-like model for cifar10, obtaining 89.5 top1 accuracy.
+
+```
+sh ./shells/cifar10_caffe.sh
+```
+
 ## Configurations
 From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](https://arxiv.org/abs/1512.03385) papers:
 
@@ -46,16 +58,16 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 
 ## Cite
 ```
-@article{xie2016aggregated,
-  title={Aggregated residual transformations for deep neural networks},
-  author={Xie, Saining and Girshick, Ross and Doll{\'a}r, Piotr and Tu, Zhuowen and He, Kaiming},
-  journal={arXiv preprint arXiv:1611.05431},
-  year={2016}
-}
 @inproceedings{he2016deep,
   title={Deep residual learning for image recognition},
   author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
   booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2016}
+}
+@article{xie2016aggregated,
+  title={Aggregated residual transformations for deep neural networks},
+  author={Xie, Saining and Girshick, Ross and Doll{\'a}r, Piotr and Tu, Zhuowen and He, Kaiming},
+  journal={arXiv preprint arXiv:1611.05431},
   year={2016}
 }
 ```

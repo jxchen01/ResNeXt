@@ -42,7 +42,7 @@ class DownsampleA(nn.Module):
 
     def __init__(self, nIn, nOut, stride):
         super(DownsampleA, self).__init__()
-	assert stride == 2
+        assert stride == 2
         self.avg = nn.AvgPool2d(kernel_size=1, stride=stride)
 
     def forward(self, x):

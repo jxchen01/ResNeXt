@@ -15,4 +15,4 @@ You can construct a model with random weights by calling its constructor:
 
 from .resnext import *
 from .resnet import *
-from .vgg_bn_drop import *
+from .caffe_cifar import *

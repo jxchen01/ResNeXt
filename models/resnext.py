@@ -80,7 +80,7 @@ class CifarResNeXt(nn.Module):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
-		init.kaiming_normal(m.weight)
+                init.kaiming_normal(m.weight)
                 m.bias.data.zero_()
 
     def _make_layer(self, block, planes, blocks, stride=1):

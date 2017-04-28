@@ -143,7 +143,7 @@ def main():
     for epoch in range(args.start_epoch, args.epochs):
         current_learning_rate = adjust_learning_rate(optimizer, epoch, args.gammas, args.schedule)
 
-        need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (args.epochs-args.start_epoch))
+        need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (args.epochs-epoch))
 
         print_log('==>>{:s} Epoch {:03d}/{:03d} , learning_rate : {:.4f}'.format(time_string(), epoch, args.epochs, current_learning_rate), log)
         print_log(' ==>[Time Left: {:02d}:{:02d}:{:02d}] Best Accuracy : {:.3f}, Error : {:.3f}'.format(need_hour, need_mins, need_secs, best_accuracy, 100-best_accuracy), log)
