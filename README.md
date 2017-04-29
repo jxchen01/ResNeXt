@@ -47,8 +47,8 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 |  20   |      *      |     *      |    0.27M   |       8.47       |       32.99       |   ResNet     |
 |  32   |      *      |     *      |    0.46M   |       7.67       |       30.80       |   ResNet     |
 |  44   |      *      |     *      |    0.66M   |       7.23       |       29.45       |   ResNet     |
-|  56   |      *      |     *      |    0.85M   |       6.86       |                   |   ResNet     |
-| 110   |      *      |     *      |    1.7M    |       6.62       |                   |   ResNet     |
+|  56   |      *      |     *      |    0.85M   |       6.86       |       28.89       |   ResNet     |
+| 110   |      *      |     *      |    1.7M    |       6.62       |       27.62       |   ResNet     |
 
 ## Other frameworks
 * [torch (@facebookresearch)](https://github.com/facebookresearch/ResNeXt). (Original) Cifar and Imagenet
