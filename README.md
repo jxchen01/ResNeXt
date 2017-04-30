@@ -10,7 +10,7 @@ ResNet (Deep Residual Learning for Image Recognition)
 To train on Cifar-10 using 4 gpu:
 
 ```bash
-python main.py ./data/cifar.python --dataset cifar10 --arch resnext29_8_64 --save_path ./snapshots/cifar10_resnext29_8_64_310 --epochs 310 --learning_rate 0.05 --schedule 150 225 300 --gammas 0.1 0.1 0.1 --batch_size 128 --workers 4 --ngpu 4
+python main.py ./data/cifar.python --dataset cifar10 --arch resnext29_8_64 --save_path ./snapshots/cifar10_resnext29_8_64_300 --epochs 300 --learning_rate 0.05 --schedule 150 225 --gammas 0.1 0.1 --batch_size 128 --workers 4 --ngpu 4
 ```
 
 Or there are some off-the-shelf scripts can dirrectly be used for training.
@@ -43,7 +43,7 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 | depth | cardinality | base width | parameters | accuracy cifar10 | accuracy cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
 |  29   |      8      |     64     |    34.4M   |       3.67       |                   |   ResNeXt    |
-|  29   |      16     |     64     |    68.1M   |        -         |                   |   ResNeXt    |
+|  29   |      16     |     64     |    68.1M   |                  |                   |   ResNeXt    |
 |  20   |      *      |     *      |    0.27M   |       8.47       |       32.99       |   ResNet     |
 |  32   |      *      |     *      |    0.46M   |       7.67       |       30.80       |   ResNet     |
 |  44   |      *      |     *      |    0.66M   |       7.23       |       29.45       |   ResNet     |
