@@ -42,7 +42,7 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 ## Our Results
 | depth | cardinality | base width | parameters | accuracy cifar10 | accuracy cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
-|  29   |      8      |     64     |    34.4M   |       3.86       |                   |   ResNeXt    |
+|  29   |      8      |     64     |    34.4M   |       3.67       |                   |   ResNeXt    |
 |  29   |      16     |     64     |    68.1M   |        -         |                   |   ResNeXt    |
 |  20   |      *      |     *      |    0.27M   |       8.47       |       32.99       |   ResNet     |
 |  32   |      *      |     *      |    0.46M   |       7.67       |       30.80       |   ResNet     |

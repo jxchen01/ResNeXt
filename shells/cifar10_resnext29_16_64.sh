@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-model=resnext29_8_64
+model=resnext29_16_64
 dataset=cifar10
 epochs=300
 
