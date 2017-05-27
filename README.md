@@ -28,7 +28,7 @@ sh ./shells/cifar10_caffe.sh
 ## Configurations
 From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](https://arxiv.org/abs/1512.03385) papers:
 
-| depth | cardinality | base width | parameters | accuracy cifar10 | accuracy cifar100 | architecture |
+| depth | cardinality | base width | parameters |  error   cifar10 |   error  cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
 |  29   |      8      |     64     |    34.4M   |       3.65       |       17.77       |   ResNeXt    |
 |  29   |      16     |     64     |    68.1M   |       3.58       |       17.31       |   ResNeXt    |
@@ -39,10 +39,10 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 | 110   |      *      |     *      |    1.7M    |       6.61       |         -         |   ResNet     |
 | 1202  |      *      |     *      |   19.4M    |       7.93       |         -         |   ResNet     |
 
-## My Results
-| depth | cardinality | base width | parameters | accuracy cifar10 | accuracy cifar100 | architecture |
+## My Results {Last Epoch Error (Best Error)}
+| depth | cardinality | base width | parameters |  error   cifar10 |   error  cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
-|  29   |      8      |     64     |    34.4M   |       3.67       |                   |   ResNeXt    |
+|  29   |      8      |     64     |    34.4M   |       3.67       |    17.66(17.47)   |   ResNeXt    |
 |  29   |      16     |     64     |    68.1M   |                  |                   |   ResNeXt    |
 |  20   |      *      |     *      |    0.27M   |       8.47       |       32.99       |   ResNet     |
 |  32   |      *      |     *      |    0.46M   |       7.67       |       30.80       |   ResNet     |
