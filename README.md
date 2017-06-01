@@ -43,7 +43,7 @@ From the original [ResNeXt](https://arxiv.org/pdf/1611.05431.pdf) and [ResNet](h
 | depth | cardinality | base width | parameters |  error   cifar10 |   error  cifar100 | architecture |
 |:-----:|:-----------:|:----------:|:----------:|:----------------:|:-----------------:|:------------:|
 |  29   |      8      |     64     |    34.4M   |       3.67       |    17.66(17.47)   |   ResNeXt    |
-|  29   |      16     |     64     |    68.1M   |    3.59(3.39)    |                   |   ResNeXt    |
+|  29   |      16     |     64     |    68.1M   |    3.59(3.39)    |    17.31(17.06)   |   ResNeXt    |
 |  20   |      *      |     *      |    0.27M   |       8.47       |       32.99       |   ResNet     |
 |  32   |      *      |     *      |    0.46M   |       7.67       |       30.80       |   ResNet     |
 |  44   |      *      |     *      |    0.66M   |       7.23       |       29.45       |   ResNet     |
